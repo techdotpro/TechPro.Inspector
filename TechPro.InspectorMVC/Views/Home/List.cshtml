@@ -1,0 +1,75 @@
+﻿@model IEnumerable<TechPro.InspectorMVC.Models.PersonModel>
+@{
+    ViewBag.Title = "Members";
+}
+@section css {
+    <style>
+        table#list th { text-align: center; }
+
+        table#list td:nth-child(4) { width:  80px; }
+        table#list td:nth-child(5) { width: 160px; }
+                
+        table#list td:nth-child(4),
+        table#list td:nth-child(5) {
+            text-align: right;
+        }
+
+        .pagination {
+            margin-top: 1px;
+            margin-bottom: 0;
+            margin-right: 10px;
+        }
+    </style>
+}
+@helper active(int n) { 
+    int pg = 1;
+    int.TryParse(Request.QueryString["pg"], out pg);
+    pg = pg <= 1 ? 1 : pg;
+    if (pg == n)
+    {
+        @:active
+    }
+}
+
+<header class="page-header">
+    <a href="@Url.Action("Add")" class="btn btn-primary btn-sm pull-right">Add Member</a>
+    <ul class="pagination pagination-sm pull-right">
+        @for (var i = 1; i <= ((int)(ViewBag.Total / 10)) + 1; i++)
+        {
+            <li class="@active(i)">
+                @Html.ActionLink(i.ToString(), "Index", new { pg = i })
+            </li>
+        }
+    </ul>
+    <h2>Member List</h2>
+</header>
+
+<table id="list" class="table">
+    <thead>
+        <tr>
+            <th>&nbsp;</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Credit</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Contacts.Count()</td>
+            <td>@Html.DisplayFor(modelItem => item.Name)</td>
+            <td>@item.Email</td>
+            <td>@Math.Round(item.Credit, 2)</td>
+            <td>
+                <div class="btn-group">
+                    <a href="@Url.Action("Details", new { item.UUID })" class="btn btn-default btn-xs">Details</a> 
+                    <a href="@Url.Action("Edit", new { item.UUID })"    class="btn btn-default btn-xs">Edit</a> 
+                    <a href="@Url.Action("Remove", new { item.UUID })"  class="btn btn-default btn-xs">Remove</a> 
+                </div>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

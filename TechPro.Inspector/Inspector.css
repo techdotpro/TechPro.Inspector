@@ -1,0 +1,7 @@
+﻿#tpinspector li > ul {
+    display: none;
+}
+
+#tpinspector li:hover > ul {
+    display:block;
+}
