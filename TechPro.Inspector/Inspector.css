@@ -1,7 +1,102 @@
-﻿#tpinspector li > ul {
-    display: none;
+﻿#tpinspector 
+{
+    background-color: #333;
+              border: 1px solid #A0A0A0;
+       border-radius: 3px;
+               color: #A0A0A0;
+          max-height: 600px;
+           max-width: 300px;
+           min-width: 300px;
+            position: fixed;
+               right: 10px;
+                 top: 10px;
+             z-index: 9999;
 }
 
-#tpinspector li:hover > ul {
-    display:block;
+#tpinspector div:first-child {
+        padding: 5px;
+    font-weight: bold;
 }
+
+#tpinspector * {
+          color: #A0A0A0;
+      font-size: 13px;
+    font-weight: 100;
+}
+
+#tpinspector a {
+           cursor: pointer;
+            float: right;
+    padding-right:  3px;
+        font-size: 20px;
+       margin-top: -4px;
+    margin-bottom: -5px;
+    
+}
+
+#tpinspector a:hover {
+    text-decoration: none;
+}
+
+/* explorer css */
+.json-explorer {
+    overflow-y: auto;
+}
+
+    .json-explorer ul {
+        list-style-type: none;
+        margin: 0px;
+        font-size: 18px;
+        border: 1px solid #000;
+        padding-left: 0;
+    }
+
+    .json-explorer li {
+        position: relative;
+        line-height: 20px;
+        display: block;
+    }
+
+        /*.json-explorer li:before {
+            content: '\2022';
+            position: absolute;
+            left: -15px;
+            width: 100%;
+        }*/
+
+        .json-explorer li.parent {
+            cursor: pointer;
+        }
+
+            .json-explorer li.parent:before {
+                content: '\25B6';
+                font-size: .5em;
+                display: block;
+                cursor: pointer;
+            }
+
+            .json-explorer li.parent.expanded:before {
+                content: '\25BC';
+            }
+
+            .json-explorer li.parent > ul {
+                display: none;
+                cursor: auto;
+            }
+
+            .json-explorer li.parent.expanded > ul {
+                display: block;
+            }
+
+    /* theming */
+    .json-explorer .key {
+        color: #334D5C;
+        display: inline-block;
+        min-width: 30%;
+    }
+
+    .json-explorer .value {
+        color: #45B29D;
+        display: inline;
+        text-align: right;
+    }
