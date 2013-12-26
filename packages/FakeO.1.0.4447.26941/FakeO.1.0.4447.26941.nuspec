@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>FakeO</id>
+    <version>1.0.4447.26941</version>
+    <title>FakeO</title>
+    <authors>Jeff Valore (rally25rs)</authors>
+    <owners>Jeff Valore (rally25rs)</owners>
+    <projectUrl>http://www.github.com/rally25rs/FakeO</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Fake Object data generation and population, like Ruby's Faker gem, for .NET</description>
+    <releaseNotes />
+    <copyright>Copyright 2012</copyright>
+    <language />
+    <tags>c# .net data faking testing</tags>
+  </metadata>
+</package>
